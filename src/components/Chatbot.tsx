@@ -187,7 +187,7 @@ export const Chatbot = () => {
                 >
                   <div
                     className={cn(
-                      "max-w-[80%] rounded-lg px-3 py-2 text-sm",
+                      "max-w-[80%] rounded-lg px-3 py-2 text-sm break-words",
                       message.sender === 'user'
                         ? 'bg-brand-orange text-white'
                         : 'bg-muted text-foreground'
@@ -200,7 +200,7 @@ export const Chatbot = () => {
                       {message.sender === 'user' && (
                         <User className="h-4 w-4 mt-0.5 text-white flex-shrink-0" />
                       )}
-                      <div className="whitespace-pre-line">{message.content}</div>
+                      <div className="whitespace-pre-line break-words overflow-hidden">{message.content}</div>
                     </div>
                   </div>
                 </div>
