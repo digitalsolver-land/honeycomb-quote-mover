@@ -2,39 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* MonAuxiliaire Design System - Couleurs de marque professionnelles 
+Système de couleurs basé sur l'identité visuelle de la société de déménagement
 */
 
 @layer base {
   :root {
+    /* Couleurs de marque MonAuxiliaire */
+    --brand-orange: 25 100% 59%;        /* Orange principal signature */
+    --brand-orange-light: 25 90% 70%;   /* Orange clair pour hovers */
+    --brand-blue: 217 33% 17%;          /* Bleu professionnel foncé */
+    --brand-blue-light: 217 33% 27%;    /* Bleu clair pour variations */
+    --brand-green: 160 84% 39%;         /* Vert conversion pour CTA */
+    --brand-green-light: 160 74% 49%;   /* Vert clair pour hovers */
+
+    /* Système de couleurs adapté */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 217 33% 17%;          /* Utilise brand-blue pour le texte */
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 217 33% 17%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 217 33% 17%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 25 100% 59%;             /* Orange principal */
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 217 33% 17%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 160 84% 39%;              /* Vert pour accents */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 25 100% 59%;                /* Orange pour focus */
+
+    /* Gradients spécifiques MonAuxiliaire */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-orange)), hsl(var(--brand-blue)));
+    --gradient-cta: linear-gradient(135deg, hsl(var(--brand-green)), hsl(var(--brand-green-light)));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 98%));
+
+    /* Ombres avec couleurs de marque */
+    --shadow-orange: 0 10px 30px -10px hsl(var(--brand-orange) / 0.3);
+    --shadow-green: 0 10px 30px -10px hsl(var(--brand-green) / 0.3);
+    --shadow-elegant: 0 4px 20px -4px hsl(217 33% 17% / 0.1);
 
     --radius: 0.5rem;
 
@@ -101,5 +120,45 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Composants personnalisés MonAuxiliaire */
+@layer components {
+  /* Style hexagonal pour l'interface de devis unique */
+  .clip-path-hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  
+  /* Animation pour les hexagones */
+  .hexagon-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hexagon-hover:hover {
+    transform: scale(1.1) translateY(-8px);
+  }
+  
+  /* Styles pour les sliders */
+  .slider-fade {
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+  }
+  
+  /* Effets de gradient personnalisés */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--brand-orange)), hsl(var(--brand-blue)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Boutons avec effets de survol */
+  .button-float {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .button-float:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elegant);
   }
 }
